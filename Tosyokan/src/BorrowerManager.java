@@ -166,4 +166,18 @@ public class BorrowerManager {
 		return true;
 	}
 
+	public boolean isgetID(int num)
+	{
+
+		//int number = 1;
+		if(!borrowerList.isEmpty()){
+			//String result = "利用者ID : 利用者名 \r\n";
+			for(int i = 0; i < borrowerList.size(); i++){
+				if(borrowerList.get(i).getID() == num){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

@@ -122,4 +122,9 @@ public class LibrarySystem {
 	public String getList(){
 		return lendInformationManager.getList();
 	}
+
+	//利用者IDが存在するか
+	public boolean isgetID(int num){
+		return borrowerManager.isgetID(num);
+	}
 }

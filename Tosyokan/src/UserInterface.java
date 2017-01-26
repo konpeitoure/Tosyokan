@@ -59,12 +59,16 @@ public class UserInterface {
 			    		System.out.print("利用者ID>");
 			    		num = Integer.parseInt(br.readLine());
 			    		borrowerId = num;
+			    		if(LS.isgetID(borrowerId)){
 			    		System.out.print("図書ID>");
 			    		num = Integer.parseInt(br.readLine());
 			    		bookId = num;
 			    		System.out.println(LS.checkOutBook(borrowerId,bookId));
 			    		System.out.print("終了する場合は'y'を押してください。>");
 			    		s = br.readLine();
+			    		}else{
+			    			System.out.println("不正な利用者IDが入力されました。");
+			    		}
 		    		}
 		    	}else if(num ==2){
 		    		//図書の返却
