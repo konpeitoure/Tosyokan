@@ -46,6 +46,8 @@ public class UserInterface {
 			System.out.println("7:図書の削除");
 			System.out.println("8:図書一覧");
 			System.out.println("9:返却日超過者一覧");
+			System.out.println("10:図書IDの検索");
+			System.out.println("11:貸出検索");
 			System.out.println("0:終了");
 
 		    try{
