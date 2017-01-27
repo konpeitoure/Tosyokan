@@ -149,7 +149,7 @@ public class UserInterface {
 		    	}else if(num == 10){
 		    		String s = "";
 		    		while(!s.equals("y")){
-		    		//名前から図書IDの検索
+		    		//本の名前から図書IDの検索
                     System.out.print("本の名前を入れてください>");
                     str = br.readLine();
                     System.out.println(LS.searchbook(str));
@@ -158,7 +158,24 @@ public class UserInterface {
 		    		}
 		    	}else if(num == 11){
 		    		//貸出図書一覧を表示
-		    		System.out.println(LS.getList());
+		    		String s = "";
+		    		while(!s.equals("y")){
+		    		//名前から借りている本の検索
+                    System.out.print("利用者の名前を入れてください>");
+                    str = br.readLine();
+                    /*if(str.equals("")){
+                    	System.out.println("空白だよ");
+                    }else{
+                    	System.out.println("上手くいってないよ");
+                    }*/
+                    if(str.equals("")){
+                    	System.out.println(LS.getList());
+                    }else{
+                    	System.out.println(LS.getList(str));
+                    }
+		    		System.out.print("終了する場合は'y'を押してください。>");
+		    		s = br.readLine();
+		    		}
 		    	}else if(num == 0){
 		    		LS.saveData();
 		    		break;

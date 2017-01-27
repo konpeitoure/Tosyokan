@@ -76,11 +76,11 @@ public class LendInformationManager{
 
 			Calendar calendar = Calendar.getInstance();
 
-			//calendarに値を入れている
-			int year = calendar.get(Calendar.YEAR);
-			int month = calendar.get(Calendar.MONTH) + 1;
-			int day = calendar.get(Calendar.DATE) + 5;
-			//返却日指定のため
+			//calendarに値を入れている、これだと月末にずれる
+			//int year = calendar.get(Calendar.YEAR);
+			//int month = calendar.get(Calendar.MONTH) + 1;
+			//int day = calendar.get(Calendar.DATE) + 5;
+			//返却日指定のため、
 			calendar.add(Calendar.DAY_OF_MONTH, 5);
 			/*
 			 * public abstract void add(int field,int amount)
@@ -103,6 +103,8 @@ public class LendInformationManager{
 
 		    LendInformation lendInformation = new LendInformation(calendar,borrower,book);
 		    LendInformationList.add(lendInformation);
+		    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		    sdf.format(calendar.getTime());
 
 		    //System.out.println("(" + week_name[week] + ")");
 		    //System.out.println(hour + "時" + minute + "分" + second + "秒");
@@ -110,8 +112,8 @@ public class LendInformationManager{
 		    //System.out.println("今日は今年の" + day_of_year + "日目です");
 
 
-			String returnday = year + "/" + month + "/" + day;
-			return returnday;
+			//String returnday = year + "/" + month + "/" + day;
+			return sdf.format(calendar.getTime());
 		}
 
 		public void removeInformation(LendInformation lendInformation)
@@ -199,6 +201,28 @@ public class LendInformationManager{
 				}
 			}else{
 				result = "返却日超過貸出はありません。\r\n";
+			}
+			return result;
+		}
+
+		public String getList(String name)
+		{
+			/*
+				特定の人物が借りている本を表示する。
+			 */
+			String result;
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			if(!LendInformationList.isEmpty()){
+				result = "利用者名 : 図書名 : 返却日 \r\n";
+				for(int i = 0; i < LendInformationList.size(); i++){
+					if(LendInformationList.get(i).getBorrowerName().equals(name)){
+						result = result + LendInformationList.get(i).getBorrowerName() + " : "
+						+ LendInformationList.get(i).getBookName() + " : "
+						+ sdf.format(LendInformationList.get(i).getReturndate().getTime()) + "\r\n";
+					}
+				}
+			}else{
+				result = "貸出図書はありません。\r\n";
 			}
 			return result;
 		}
