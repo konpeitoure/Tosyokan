@@ -195,8 +195,6 @@ public class LendInformationManager{
 						//+ LendInformationList.get(i).getReturndate() + "\r\n";
 						+ sdf.format(LendInformationList.get(i).getReturndate().getTime()) + "\r\n";
 						//return "利用者名 : 図書名 : 返却日 : \r\n";
-					}else{
-						result = "返却日超過貸出はありません。\r\n";
 					}
 				}
 			}else{
